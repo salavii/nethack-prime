@@ -1,0 +1,4 @@
+condition,goal,minimal_actions,prose,seed,distinct_actions,turns_moved,total_reward,retries,defaults,max_depth,descended,stairs_seen,actions_used
+prose-50,True,False,True,0,7,44,-0.18,2,0,1,False,False,down east north northwest south up west
+prose-50,True,False,True,1,7,45,15.84,0,0,1,False,False,down north south southwest up wait west
+prose-50,True,False,True,2,4,40,-0.21,1,0,1,False,False,east north south west
