@@ -169,18 +169,23 @@ and the spread tightened (8–10) rather than merely shifting.
 
 At 50 steps with every helpful setting enabled, movement looks excellent — and means little.
 
-| Seed | Turns moved | Unique tiles visited | Bounding box | Deepest level | Descended |
-|---|---:|---:|---|---:|:---:|
-| 0 | 44 / 50 | **6** | 1 × 6 | 1 | No |
-| 1 | 45 / 50 | 24 | 14 × 11 | 1 | No |
-| 2 | 40 / 50 | **6** | 2 × 4 | 1 | No |
+| Seed | Turns moved | Distinct actions | Deepest level | Stairs seen | Descended |
+|---|---:|---:|---:|:---:|:---:|
+| 0 | 44 / 50 | 7 | 1 | No | No |
+| 1 | 45 / 50 | 7 | 1 | No | No |
+| 2 | 40 / 50 | 4 | 1 | No | No |
 
-Two of three agents spent fifty moves inside a **six-tile corridor**, revisiting one square
-twenty times. Movement counted as success; exploration did not occur.
+Every agent moved on 40–45 of its 50 turns, and **not one ever saw a down staircase** — let
+alone used it. Movement counted as success; exploration did not occur.
 
-**`turns_moved` is a misleading metric. `unique_tiles_visited` is the honest one.** Prose
-solved *local* competence — pick a walkable direction — without producing *navigation*.
-Nothing in the prompt rewards reaching unexplored space, so the agent random-walks locally.
+**`turns_moved` is a misleading metric.** Prose solved *local* competence — pick a walkable
+direction — without producing *navigation*. Nothing in the prompt rewards reaching
+unexplored space, so the agent moves without going anywhere.
+
+> **Not measured.** The honest metric here is the number of distinct tiles occupied, and this
+> harness does not compute it: `sweep.py` records only whether position *changed* between
+> steps, never the set of positions visited. Every column in the table above comes straight
+> from [`results/phase29_longhorizon.csv`](results/phase29_longhorizon.csv).
 
 Reward is worse still: it is anti-correlated with movement at short horizons, since it mostly
 tracks the per-step time penalty. One run scored **+15.84** from incidental gold and kills
